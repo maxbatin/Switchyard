@@ -1,0 +1,70 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:byte" name="result"/>
+        <xs:element type="xs:string" name="description"/>
+        <xs:element type="xs:string" name="errorcode"/>
+        <xs:element name="method">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accounts">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="account">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:float" name="avbalance"/>
+                          <xs:element type="xs:short" name="cfo"/>
+                          <xs:element type="xs:string" name="currency"/>
+                          <xs:element type="xs:short" name="depId"/>
+                          <xs:element type="xs:long" name="iban"/>
+                          <xs:element type="xs:long" name="id"/>
+                          <xs:element type="xs:byte" name="status"/>
+                          <xs:element type="xs:string" name="type"/>
+                          <xs:element name="cards">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="card">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:long" name="number"/>
+                                      <xs:element type="xs:byte" name="mbr"/>
+                                      <xs:element type="xs:byte" name="status"/>
+                                      <xs:element type="xs:short" name="expdate"/>
+                                      <xs:element type="xs:string" name="ownername"/>
+                                      <xs:element type="xs:string" name="currency"/>
+                                      <xs:element type="xs:float" name="avbalance"/>
+                                      <xs:element type="xs:float" name="creditbalance"/>
+                                      <xs:element type="xs:float" name="blbalance"/>
+                                      <xs:element type="xs:float" name="indebtedbalance"/>
+                                      <xs:element type="xs:float" name="minpaybalance"/>
+                                      <xs:element type="xs:string" name="product"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="blbalance"/>
+                          <xs:element type="xs:float" name="balance"/>
+                          <xs:element type="xs:float" name="creditbalance"/>
+                          <xs:element type="xs:string" name="accountSchema"/>
+                          <xs:element type="xs:string" name="owner"/>
+                          <xs:element type="xs:long" name="contractId"/>
+                          <xs:element type="xs:string" name="multibalance"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="name"/>
+            <xs:attribute type="xs:byte" name="stan"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,112 @@
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/">
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+<s:element name="XMLRPCCall">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="request" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="timeout" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="priority" type="s:unsignedShort"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="XMLRPCCallResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="XMLRPCCallResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="IFXCCall">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="request" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="reqId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="logicalId" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="timeout" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="priority" type="s:unsignedShort"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="IFXCCallResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="IFXCCallResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="XMLRPCCallSoapIn">
+<wsdl:part name="parameters" element="tns:XMLRPCCall"/>
+</wsdl:message>
+<wsdl:message name="XMLRPCCallSoapOut">
+<wsdl:part name="parameters" element="tns:XMLRPCCallResponse"/>
+</wsdl:message>
+<wsdl:message name="IFXCCallSoapIn">
+<wsdl:part name="parameters" element="tns:IFXCCall"/>
+</wsdl:message>
+<wsdl:message name="IFXCCallSoapOut">
+<wsdl:part name="parameters" element="tns:IFXCCallResponse"/>
+</wsdl:message>
+<wsdl:portType name="RSBankWSSoap">
+<wsdl:operation name="XMLRPCCall">
+<wsdl:input message="tns:XMLRPCCallSoapIn"/>
+<wsdl:output message="tns:XMLRPCCallSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="IFXCCall">
+<wsdl:input message="tns:IFXCCallSoapIn"/>
+<wsdl:output message="tns:IFXCCallSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="RSBankWSSoap" type="tns:RSBankWSSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="XMLRPCCall">
+<soap:operation soapAction="http://tempuri.org/XMLRPCCall" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="IFXCCall">
+<soap:operation soapAction="http://tempuri.org/IFXCCall" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="RSBankWSSoap12" type="tns:RSBankWSSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="XMLRPCCall">
+<soap12:operation soapAction="http://tempuri.org/XMLRPCCall" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="IFXCCall">
+<soap12:operation soapAction="http://tempuri.org/IFXCCall" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="RSBankWS">
+<wsdl:port name="RSBankWSSoap" binding="tns:RSBankWSSoap">
+<soap:address location="http://ws/RSBankWS/RSBankWS.asmx"/>
+</wsdl:port>
+<wsdl:port name="RSBankWSSoap12" binding="tns:RSBankWSSoap12">
+<soap12:address location="http://ws/RSBankWS/RSBankWS.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

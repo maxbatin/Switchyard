@@ -1,0 +1,25 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="request">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="method">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="parameters">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="clientid"/>
+                    <xs:element type="xs:string" name="accountType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="name"/>
+            <xs:attribute type="xs:byte" name="stan"/>
+            <xs:attribute type="xs:string" name="project"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
